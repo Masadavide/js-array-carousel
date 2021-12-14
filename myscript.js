@@ -22,3 +22,35 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ] */
 
+let itemsContent = '';
+let elementActive = 0;
+
+for (let i = 0; i < items.length; i++){
+    itemsContent += `
+        <div class="item" id="item-${i}">
+            <img src="${items[i]}" alt="">
+        </div>`;
+}
+
+const itemsContainer = document.querySelector('.items_container');
+itemsContainer.innerHTML = itemsContent;
+
+const itemsActive = document.getElementById('item-'+elementActive);
+itemsActive.classList.add('active');
+
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
+prev.addEventListener('click', function() {
+    elementActive--;
+    itemsActive.classList.remove('active');
+    itemsActive = document.getElementById('item-'+elementActive);
+    itemsActive.classList.add('active');
+
+});
+next.addEventListener('click', function() {
+    elementActive++;
+    itemsActive.classList.remove('active');
+    itemsActive = document.getElementById('item-'+elementActive);
+    itemsActive.classList.add('active');
+});
