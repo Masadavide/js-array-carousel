@@ -35,21 +35,28 @@ for (let i = 0; i < items.length; i++){
 const itemsContainer = document.querySelector('.items_container');
 itemsContainer.innerHTML = itemsContent;
 
-const itemsActive = document.getElementById('item-'+elementActive);
+let itemsActive = document.getElementById('item-'+elementActive);
 itemsActive.classList.add('active');
 
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 prev.addEventListener('click', function() {
-    elementActive--;
+    if (elementActive == 0){
+        elementActive = 4;
+    }else{
+        elementActive--;
+    }
     itemsActive.classList.remove('active');
     itemsActive = document.getElementById('item-'+elementActive);
     itemsActive.classList.add('active');
-
 });
 next.addEventListener('click', function() {
-    elementActive++;
+    if (elementActive == 4){
+        elementActive = 0;
+    }else{
+        elementActive++;
+    }
     itemsActive.classList.remove('active');
     itemsActive = document.getElementById('item-'+elementActive);
     itemsActive.classList.add('active');
