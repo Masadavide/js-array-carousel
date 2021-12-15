@@ -6,7 +6,7 @@ const items = [
     'img/05.jpg'
 ];
 
-/* const title = [
+const title = [
     'Svezia',
     'Svizzera',
     'Gran Bretagna',
@@ -20,20 +20,36 @@ const text = [
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-] */
+]
 
 let itemsContent = '';
+let itemsContentSide = '';
+
 let elementActive = 0;
 
 for (let i = 0; i < items.length; i++){
     itemsContent += `
         <div class="item" id="item-${i}">
             <img src="${items[i]}" alt="">
+            <div class="descrizione">
+                <h1> ${title[i]}</h1> 
+                <p> ${text[i]}</p> 
+            </div>
+        </div>`;
+}
+
+for (let i = 0; i < items.length; i++){
+    itemsContentSide += `
+        <div class="item2" id="item-${i}">
+            <img src="${items[i]}" alt="">
         </div>`;
 }
 
 const itemsContainer = document.querySelector('.items_container');
 itemsContainer.innerHTML = itemsContent;
+
+const itemsContainerSide = document.querySelector('.lateral');
+itemsContainerSide.innerHTML += itemsContentSide;
 
 let itemsActive = document.getElementById('item-'+elementActive);
 itemsActive.classList.add('active');
@@ -50,7 +66,9 @@ prev.addEventListener('click', function() {
     itemsActive.classList.remove('active');
     itemsActive = document.getElementById('item-'+elementActive);
     itemsActive.classList.add('active');
+
 });
+
 next.addEventListener('click', function() {
     if (elementActive == 4){
         elementActive = 0;
