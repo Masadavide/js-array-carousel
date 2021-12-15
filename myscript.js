@@ -40,9 +40,10 @@ for (let i = 0; i < items.length; i++){
 
 for (let i = 0; i < items.length; i++){
     itemsContentSide += `
-        <div class="item2" id="item-${i}">
+        <div class="item2" id="lateral_item-${i}">
             <img src="${items[i]}" alt="">
         </div>`;
+    
 }
 
 const itemsContainer = document.querySelector('.items_container');
@@ -53,6 +54,9 @@ itemsContainerSide.innerHTML += itemsContentSide;
 
 let itemsActive = document.getElementById('item-'+elementActive);
 itemsActive.classList.add('active');
+
+let itemsSideActive = document.getElementById('lateral_item-'+elementActive);
+itemsSideActive.classList.add('opacity');
 
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
@@ -67,6 +71,9 @@ prev.addEventListener('click', function() {
     itemsActive = document.getElementById('item-'+elementActive);
     itemsActive.classList.add('active');
 
+    itemsSideActive.classList.remove('opacity');
+    itemsSideActive = document.getElementById('lateral_item-'+elementActive);
+    itemsSideActive.classList.add('opacity');
 });
 
 next.addEventListener('click', function() {
@@ -78,4 +85,8 @@ next.addEventListener('click', function() {
     itemsActive.classList.remove('active');
     itemsActive = document.getElementById('item-'+elementActive);
     itemsActive.classList.add('active');
+
+    itemsSideActive.classList.remove('opacity');
+    itemsSideActive = document.getElementById('lateral_item-'+elementActive);
+    itemsSideActive.classList.add('opacity');
 });
