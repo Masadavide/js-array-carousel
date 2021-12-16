@@ -36,15 +36,14 @@ for (let i = 0; i < items.length; i++){
                 <p> ${text[i]}</p> 
             </div>
         </div>`;
-}
 
-for (let i = 0; i < items.length; i++){
-    itemsContentSide += `
+        itemsContentSide += `
         <div class="item2" id="lateral_item-${i}">
             <img src="${items[i]}" alt="">
         </div>`;
-    
 }
+
+
 
 const itemsContainer = document.querySelector('.items_container');
 itemsContainer.innerHTML = itemsContent;
